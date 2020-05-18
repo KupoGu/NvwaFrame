@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="onClickCommand" format="reference" />
+    <attr name="isThrottleFirst" format="boolean" />
+    <attr name="onLongClickCommand" format="reference" />
+    <attr name="onFocusChangeCommand" format="reference" />
+    <attr name="onTouchCommand" format="reference" />
+    <attr name="currentView" format="reference" />
+
+    <declare-styleable name="View">
+        <attr name="onClickCommand" />
+        <attr name="onLongClickCommand" />
+        <attr name="onFocusChangeCommand" />
+        <attr name="onTouchCommand" />
+        <attr name="isThrottleFirst" />
+        <attr name="currentView" />
+
+    </declare-styleable>
+</resources>

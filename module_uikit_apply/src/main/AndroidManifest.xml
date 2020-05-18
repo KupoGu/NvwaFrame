@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nvwa.uikit.apply">
+
+    <application android:name=".ApplyApplication">
+        <activity android:name=".ApplyActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".pudding.PuddingActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

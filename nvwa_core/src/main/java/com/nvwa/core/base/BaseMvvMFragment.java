@@ -3,9 +3,12 @@ package com.nvwa.core.base;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.nvwa.core.bean.ActionInfo;
 import com.nvwa.core.bean.BusInfo;
@@ -15,7 +18,7 @@ import com.nvwa.core.bean.BusInfo;
  * Create by AS 2020/5/15 09:34
  */
 public abstract class BaseMvvMFragment<DB extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment<DB> {
-    protected VM viewModel;
+    private VM viewModel;
     private int viewModelId;
 
     @Override
@@ -40,17 +43,16 @@ public abstract class BaseMvvMFragment<DB extends ViewDataBinding, VM extends Ba
         viewModel.getUiLiveData().getFinishEvent().observe(this, aVoid -> getActivity().finish());
     }
 
-    public abstract int initVariableId();
+    abstract int initVariableId();
 
-    protected abstract VM initViewModel();
+    abstract VM initViewModel();
 
-    protected void doStatusEvent(ActionInfo params) {
+    private void doStatusEvent(ActionInfo params) {
     }
 
-    public <VM extends AndroidViewModel> VM VMProviders(@NonNull Class<VM> modelClass) {
-        return (VM) new ViewModelProvider(this).get(modelClass);
+    public <VM extends AndroidViewModel> VM VMProviders(Fragment fragment, @NonNull Class modelClass) {
+        return (VM) ViewModelProviders.of(fragment).get(modelClass);
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

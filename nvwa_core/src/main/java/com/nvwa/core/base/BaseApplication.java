@@ -1,7 +1,6 @@
 package com.nvwa.core.base;
 
 import android.app.Application;
-import android.os.Debug;
 
 import com.jeremyliao.liveeventbus.BuildConfig;
 import com.jeremyliao.liveeventbus.LiveEventBus;

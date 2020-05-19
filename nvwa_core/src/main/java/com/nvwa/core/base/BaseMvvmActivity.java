@@ -3,9 +3,10 @@ package com.nvwa.core.base;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.nvwa.core.bean.ActionInfo;
 
@@ -45,8 +46,8 @@ public abstract class BaseMvvmActivity<DB extends ViewDataBinding, VM extends Ba
      */
     protected abstract VM initViewModel();
 
-    public <VM extends AndroidViewModel> VM VMProviders(@NonNull Class modelClass) {
-        return (VM) new ViewModelProvider(this).get(modelClass);
+    public <VM extends AndroidViewModel> VM VMProviders(AppCompatActivity appCompatActivity, @NonNull Class modelClass) {
+        return (VM) ViewModelProviders.of(appCompatActivity).get(modelClass);
     }
 
     protected VM getViewModel() {

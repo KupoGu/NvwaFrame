@@ -20,13 +20,13 @@ import com.nvwa.core.bean.StatusInfo;
 import com.nvwa.uikit.apply.pudding.Notice;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import me.jessyan.autosize.internal.CustomAdapt;
+import java.util.Objects;
 
 /**
  * @author G.god
  * Create by AS 2020/5/15 10:19
  */
-public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompatActivity implements CustomAdapt {
+public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompatActivity {
     protected DB viewBinding;
     protected RxPermissions rxPermissions;
     protected Toolbar mToolBar;
@@ -58,7 +58,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
     }
 
     protected void showBackButton(boolean show) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(show);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(show);
     }
 
     protected RxPermissions getRxPermissions() {
@@ -105,15 +105,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding> extends AppCompat
         }
     }
 
-    @Override
-    public boolean isBaseOnWidth() {
-        return false;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 798;
-    }
 
     protected DB getViewBinding() {
         return viewBinding;

@@ -1,4 +1,3 @@
-include ':module_uikit_apply'
 include ':nvwa_uikit'
 include ':nvwa_base'
 include ':nvwa_core'

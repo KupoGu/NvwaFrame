@@ -10,7 +10,6 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import com.jeremyliao.liveeventbus.LiveEventBus;
-import com.nvwa.base.util.InstanceUtil;
 import com.nvwa.core.bean.ActionInfo;
 import com.nvwa.core.bean.BusInfo;
 import com.nvwa.core.bean.StatusInfo;
@@ -29,10 +28,13 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
 
 
     public BaseViewModel(@NonNull Application application) {
-        super(application);
-        model = InstanceUtil.getInstance(this, 0);
+        this(application, null);
     }
 
+    public BaseViewModel(@NonNull Application application, M model) {
+        super(application);
+        this.model = model;
+    }
 
     public UILiveData getUiLiveData() {
         if (uiLiveData == null) {

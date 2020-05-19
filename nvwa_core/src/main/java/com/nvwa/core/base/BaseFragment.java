@@ -22,15 +22,13 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.Objects;
 
-import me.jessyan.autosize.internal.CustomAdapt;
-
 /**
  * @author G.god
  * Create by AS 2020/5/15 09:21
  */
-public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment implements CustomAdapt {
+public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment {
     private ViewGroup rootView;
-    protected DB viewBinding;
+    DB viewBinding;
     private RxPermissions rxPermissions;
     private static final String FRAGMENT_KEY = "nvwa_fragment_key";
 
@@ -102,9 +100,7 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
 //        LoadingDialog.dismissProgress();
     }
 
-    protected int getLayoutId() {
-        return 0;
-    }
+    public abstract int getLayoutId();
 
     protected RxPermissions getRxPermissions() {
         if (rxPermissions == null) {
@@ -113,15 +109,6 @@ public abstract class BaseFragment<DB extends ViewDataBinding> extends Fragment 
         return rxPermissions;
     }
 
-    @Override
-    public boolean isBaseOnWidth() {
-        return false;
-    }
-
-    @Override
-    public float getSizeInDp() {
-        return 798;
-    }
 
     protected DB getViewBinding() {
         return viewBinding;
